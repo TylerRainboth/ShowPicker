@@ -1,0 +1,31 @@
+apply plugin: 'application'
+
+mainClassName = 'show_picker'
+
+compileJava.options.encoding = 'UTF-8'
+
+
+// Repositories and dependencies for code go here
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.io7m.xom:xom:1.2.+'
+  compile 'net.sourceforge.nekohtml:nekohtml:1.9.+'
+}
+
+
+task fatJar(type: Jar) {
+	manifest {
+		attributes 'Main-Class': 'show_picker'
+	}
+	baseName = 'Show Picker'
+	
+	from {
+		configurations.compile.collect {
+			it.isDirectory() ? it : zipTree(it)
+		}
+	}
+	with jar
+}
