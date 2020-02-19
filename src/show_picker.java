@@ -18,6 +18,10 @@ import javafx.stage.Stage;
 
 public class show_picker extends Application {
 	
+	public static void main(String[] args) {
+		launch(args);
+	}
+	
 	public String picker() {
 		BufferedReader inputReader;
 		ArrayList<String> add = new ArrayList<String>();
